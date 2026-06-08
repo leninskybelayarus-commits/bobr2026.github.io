@@ -519,61 +519,69 @@
 <script>
 ymaps.ready(function () {
 
-    // 1. СОЗДАЁМ КАРТУ (ЭТО ТЫ ЗАБЫЛ)
     const map = new ymaps.Map("map", {
-        center: [53.1384, 29.2214], // Бобруйск
-        zoom: 13
+        center: [53.1384, 29.2214],
+        zoom: 14,
+        controls: ['zoomControl']
     });
 
-    // 2. ИКОНКИ ПО ТИПАМ
-    const iconMap = {
-        architecture: "🏛",
-        museum: "🏺",
-        industry: "🏭"
-    };
-
-    // 3. ОБЪЕКТЫ
     const places = [
-        { name: "Водонапорная башня («Чырвоная вежа»)", coords: [53.1450,29.2245], type: "industry" },
-        { name: "Дом Миренбурга", coords: [53.13061,29.21637], type: "architecture" },
-        { name: "Дом купчихи Кацнельсон", coords: [53.14022,29.21855], type: "architecture" },
-        { name: "Сквер Челюскинцев возле Свято-Никольского собора", coords: [53.13530,29.22740], type: "architecture" },
-        { name: "Типография имени Непогодина", coords: [53.13532,29.23075], type: "industry" },
-        { name: "Бобруйский краеведческий музей", coords: [53.1403,29.2236], type: "museum" },
-        { name: "Порт-Артур", coords: [53.13781,29.22692], type: "architecture" },
-        { name: "Еврейский дворик", coords: [53.13540,29.23193], type: "museum" }
+    {
+        name: "Водонапорная башня («Чырвоная вежа»)",
+        coords: [53.142642, 29.222252],
+        icon: "🏭"
+    },
+    {
+        name: "Дом Миренбурга",
+        coords: [53.140642, 29.221806],
+        icon: "🏛"
+    },
+    {
+        name: "Дом купчихи Кацнельсон",
+        coords: [53.139360, 29.221507],
+        icon: "🏛"
+    },
+    {
+        name: "Сквер Челюскинцев возле Свято-Никольского собора",
+        coords: [53.139439, 29.221563],
+        icon: "🏛"
+    },
+    {
+        name: "Типография имени Непогодина",
+        coords: [53.137678, 29.226742],
+        icon: "🏭"
+    },
+    {
+        name: "Бобруйский краеведческий музей",
+        coords: [53.135303, 29.227610],
+        icon: "🏺"
+    },
+    {
+        name: "Порт-Артур",
+        coords: [53.131631, 29.231056],
+        icon: "🏛"
+    },
+    {
+        name: "Еврейский дворик",
+        coords: [53.130057, 29.229887],
+        icon: "🏺"
+    }
     ];
 
-    // 4. ДОБАВЛЯЕМ МАРКЕРЫ
     places.forEach(place => {
 
-        const icon = iconMap[place.type] || "📍";
+    const placemark = new ymaps.Placemark(
+        place.coords,
+        {
+            balloonContent: `<b>${place.icon} ${place.name}</b>`
+        },
+        {
+            preset: 'islands#redIcon'
+        }
+    );
 
-        const placemark = new ymaps.Placemark(
-            place.coords,
-            {
-                balloonContent: `<b>${icon} ${place.name}</b>`
-            },
-            {
-                iconLayout: 'default#imageWithContent',
-                iconImageSize: [30, 30],
-                iconImageOffset: [-15, -15],
-                iconContentLayout: ymaps.templateLayoutFactory.createClass(`
-                    <div style="
-                        font-size: 24px;
-                        width: 30px;
-                        height: 30px;
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                    ">
-                        ${icon}
-                    </div>
-                `)
-            }
-        );
+    map.geoObjects.add(placemark);
 
-        map.geoObjects.add(placemark);
     });
 
 });
