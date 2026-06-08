@@ -90,15 +90,23 @@
 
     <main>
         <section class="hero-gradient text-white py-12 md:py-16">
-            <div class="container mx-auto px-4">
-                <div class="max-w-3xl">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Откройте для себя Бобруйск</h2>
-                    <p class="text-lg mb-6">Город с богатой историей, уникальной архитектурой и промышленным наследием. На этом сайте вы найдёте главные туристические достопримечательности, которые расскажут историю Бобруйска от деревянного зодчества до промышленных памятников.</p>
-                    <a href="#attractions" class="inline-block bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">Исследовать достопримечательности</a>
-                </div>
-            </div>
-        </section>
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">
+                Откройте для себя Бобруйск
+            </h2>
 
+            <p class="text-lg mb-6">
+                Город с богатой историей, уникальной архитектурой и промышленным наследием. На этом сайте вы найдёте главные туристические достопримечательности, которые расскажут историю Бобруйска от деревянного зодчества до промышленных памятников.
+            </p>
+
+            <a href="#attractions-list"
+               class="inline-block bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">
+               Исследовать достопримечательности
+            </a>
+        </div>
+    </div>
+</section>
         <section id="attractions" class="py-section bg-gray-50">
     
     <!-- Секция "О проекте" (убран конфликтующий bg-white) -->
@@ -156,12 +164,17 @@
 
     </div>
 </div>
-
+    
     <!-- Секция "Достопримечательности" на том же сером фоне -->
+
+    <div id="attractions-list" style="padding-top:100px; margin-top:-100px;"></div>
+
    <div class="container mx-auto px-4">
     <!-- Шапка секции -->
     <div class="text-center mb-10">
-        <h2 class="text-3xl font-serif font-bold text-primary mb-3">Туристические достопримечательности Бобруйска</h2>
+        <h2 class="text-3xl font-serif font-bold text-primary mb-3">
+            Туристические достопримечательности Бобруйска
+        </h2>
         <p class="text-dark max-w-2xl mx-auto">Список ключевых объектов культурного и исторического наследия, рекомендованных для посещения.</p>
     </div>
     
@@ -263,7 +276,7 @@
         const navigationData = [
             { "label": "Главная", "href": "#home", "icon": "fas fa-home" },
             { "label": "О проекте", "href": "#about", "icon": "fas fa-info-circle" },
-            { "label": "Достопримечательности", "href": "#attractions", "icon": "fas fa-landmark" },
+            { "label": "Достопримечательности", "href": "#attractions-list", "icon": "fas fa-landmark" },
             
             { "label": "Карта", "href": "#map", "icon": "fas fa-map" },
             { "label": "Контакты", "href": "#contact", "icon": "fas fa-phone" }
